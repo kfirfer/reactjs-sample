@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  console.log("something")
+  console.log("something " + window._env_.API_URL)
   return (
     <div className="App">
       <header className="App-header">

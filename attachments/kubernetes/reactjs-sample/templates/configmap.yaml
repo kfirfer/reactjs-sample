@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "reactjs-sample.fullname" . }}-config
+  labels:
+    {{- include "reactjs-sample.labels" . | nindent 4 }}
+data:
+  env-config.js: |
+    window._env_ = {
+    {{ range $key, $value := .Values.env }}
+     {{ $key }}: "{{ $value }}",
+    {{ end }}
+    }
