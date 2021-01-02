@@ -79,4 +79,27 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+# Hard means that by default pods will only be scheduled if there are enough nodes for them
+# and that they will never end up on the same node. Setting this to soft will do this "best effort"
+antiAffinity: "soft"
+
+# Only used if you choose soft
+weight: 1
+
+antiAffinityTopologyKey: "kubernetes.io/hostname"
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 20
+  periodSeconds: 5
+  timeoutSeconds: 5
+  successThreshold: 1
+  failureThreshold: 4
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 3
+  timeoutSeconds: 2
+  successThreshold: 1
+  failureThreshold: 4
