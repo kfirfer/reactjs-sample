@@ -36,6 +36,9 @@ ingress:
     - host: reactjs-sample.tatzan.com
       paths:
         - path: "/"
+  tls:
+    - hosts:
+        - "*.tatzan.com"
 
 tolerations:
   - effect: NoExecute
