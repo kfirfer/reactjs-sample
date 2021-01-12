@@ -62,3 +62,7 @@ resources:
 
 antiAffinity: "hard"
 
+podAnnotations:
+  linkerd.io/inject: "enabled"
+
+
