@@ -1,5 +1,5 @@
 image:
-  tag: "0.0.2"
+  tag: "0.0.3"
 
 replicaCount: 2
 
@@ -16,15 +16,15 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-    nginx.ingress.kubernetes.io/limit-connections: "200"
-    nginx.ingress.kubernetes.io/limit-rpm: "300"
-    nginx.ingress.kubernetes.io/limit-rps: "30"
-    nginx.ingress.kubernetes.io/limit-burst-multiplier: "15"
+#    nginx.ingress.kubernetes.io/limit-connections: "200"
+#    nginx.ingress.kubernetes.io/limit-rpm: "300"
+#    nginx.ingress.kubernetes.io/limit-rps: "30"
+#    nginx.ingress.kubernetes.io/limit-burst-multiplier: "15"
     nginx.ingress.kubernetes.io/enable-cors: "false"
-    nginx.ingress.kubernetes.io/enable-access-log: "true"
-    nginx.ingress.kubernetes.io/enable-rewrite-log: "true"
-    nginx.ingress.kubernetes.io/enable-opentracing: "true"
-    nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    nginx.ingress.kubernetes.io/enable-access-log: "false"
+    nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
+    nginx.ingress.kubernetes.io/enable-opentracing: "false"
+    nginx.ingress.kubernetes.io/enable-modsecurity: "false"
     nginx.ingress.kubernetes.io/service-upstream: "true"
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local
     nginx.ingress.kubernetes.io/configuration-snippet: |
