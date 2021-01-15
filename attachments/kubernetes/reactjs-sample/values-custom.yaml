@@ -21,8 +21,8 @@ ingress:
     nginx.ingress.kubernetes.io/enable-access-log: "true"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "true"
     nginx.ingress.kubernetes.io/enable-opentracing: "true"
-#    nginx.ingress.kubernetes.io/service-upstream: "true"
-#    nginx.ingress.kubernetes.io/upstream-vhost: reactjs-sample.reactjs-sample.svc.cluster.local
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "server: saffer";
       more_set_headers "X-Content-Type-Options: nosniff";
@@ -57,7 +57,7 @@ resources:
     cpu: 10m
     memory: 50Mi
   limits:
-    cpu: 2
+    cpu: 4
     memory: 1Gi
 
 antiAffinity: "hard"
