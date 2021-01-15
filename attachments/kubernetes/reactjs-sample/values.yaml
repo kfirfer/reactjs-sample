@@ -109,3 +109,10 @@ readinessProbe:
   timeoutSeconds: 2
   successThreshold: 1
   failureThreshold: 4
+
+
+extraInitContainers: []
+  ## Containers, which are run before the app containers are started.
+  # - name: init-myservice
+  #   image: busybox
+  #   command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']

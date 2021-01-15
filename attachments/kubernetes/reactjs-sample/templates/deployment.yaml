@@ -73,6 +73,9 @@ spec:
             - name: env-config
               mountPath: /usr/share/nginx/html/env-config.js
               subPath: env-config.js
+      {{- if .Values.extraInitContainers }}
+      initContainers: {{ toYaml .Values.extraInitContainers | nindent 8 }}
+      {{- end }}
       volumes:
         - name: env-config
           configMap:
