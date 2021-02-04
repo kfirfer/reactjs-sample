@@ -26,8 +26,14 @@ ingress:
     nginx.ingress.kubernetes.io/enable-opentracing: "false"
     nginx.ingress.kubernetes.io/enable-modsecurity: "false"
     nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
     nginx.ingress.kubernetes.io/upstream-vhost: $service_name.$namespace.svc.cluster.local
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_cache STATIC;
+      proxy_cache_valid 200 10m;
+      proxy_cache_use_stale error timeout invalid_header updating http_404 http_500 http_502 http_503 http_504;
+      proxy_cache_bypass $http_x_purge;
+      add_header X-Cache-Status $upstream_cache_status;
       more_set_headers "server: saffer";
       more_set_headers "X-Content-Type-Options: nosniff";
       more_set_headers "X-Frame-Options: DENY";
