@@ -16,10 +16,6 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-#    nginx.ingress.kubernetes.io/limit-connections: "200"
-#    nginx.ingress.kubernetes.io/limit-rpm: "400"
-#    nginx.ingress.kubernetes.io/limit-rps: "40"
-#    nginx.ingress.kubernetes.io/limit-burst-multiplier: "20"
     nginx.ingress.kubernetes.io/enable-cors: "false"
     nginx.ingress.kubernetes.io/enable-access-log: "false"
     nginx.ingress.kubernetes.io/enable-rewrite-log: "false"
@@ -80,6 +76,15 @@ lifecycle:
   preStop:
     exec:
       command: [ "/bin/sh", "-c", "sleep 2" ]
+
+extraVolumeMounts:
+  - name: cache-volume
+    mountPath: /tmp
+extraVolumes:
+  - name: cache-volume
+    emptyDir:
+      medium: Memory
+      sizeLimit: "100Mi"
 
 
 

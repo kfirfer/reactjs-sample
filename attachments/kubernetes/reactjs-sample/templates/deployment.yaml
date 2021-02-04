@@ -73,6 +73,9 @@ spec:
             - name: env-config
               mountPath: /usr/share/nginx/html/env-config.js
               subPath: env-config.js
+          {{- if .Values.extraVolumeMounts }}
+            {{- toYaml .Values.extraVolumeMounts | nindent 12 }}
+          {{- end }}
       {{- if .Values.extraInitContainers }}
       initContainers: {{ toYaml .Values.extraInitContainers | nindent 8 }}
       {{- end }}
@@ -80,6 +83,9 @@ spec:
         - name: env-config
           configMap:
             name: {{ template "reactjs-sample.fullname" . }}-config
+      {{- if .Values.extraVolumes }}
+        {{ toYaml .Values.extraVolumes | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
