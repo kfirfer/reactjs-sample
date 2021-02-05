@@ -28,9 +28,7 @@ ingress:
       proxy_cache STATIC;
       proxy_cache_valid 200 10m;
       proxy_cache_use_stale error timeout invalid_header updating http_404 http_500 http_502 http_503 http_504;
-      proxy_cache_bypass $http_x_purge;
-      proxy_cache_bypass $cookie_nocache $arg_nocache$arg_comment;
-      proxy_cache_bypass $http_pragma    $http_authorization;
+      proxy_cache_bypass $http_x_purge $http_pragma $http_authorization $cookie_nocache $arg_nocache $http_cache_control;
       add_header X-Cache-Status $upstream_cache_status;
       more_set_headers "server: saffer";
       more_set_headers "X-Content-Type-Options: nosniff";
