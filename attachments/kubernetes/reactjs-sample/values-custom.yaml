@@ -1,5 +1,5 @@
 image:
-  tag: "0.0.3"
+  tag: "0.0.13"
 
 replicaCount: 2
 
@@ -70,12 +70,12 @@ antiAffinity: "hard"
 
 podAnnotations:
   linkerd.io/inject: "enabled"
-  config.alpha.linkerd.io/proxy-wait-before-exit-seconds: "3"
+  config.alpha.linkerd.io/proxy-wait-before-exit-seconds: "5"
 
 lifecycle:
   preStop:
     exec:
-      command: [ "/bin/sh", "-c", "sleep 2" ]
+      command: [ "/bin/sh", "-c", "sleep 3" ]
 
 extraVolumeMounts:
   - name: cache-volume

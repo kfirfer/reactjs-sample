@@ -26,6 +26,8 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+terminationGracePeriodSeconds: 10
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -41,7 +43,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8081
 
 ingress:
   enabled: false

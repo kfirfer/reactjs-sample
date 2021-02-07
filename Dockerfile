@@ -14,5 +14,5 @@ COPY --from=build /app/build /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
 ADD nginx/nginx.conf /etc/nginx/conf.d
 ADD entrypoint.sh /etc/nginx/entrypoint.sh
-EXPOSE 80
+EXPOSE 8081
 CMD ["nginx", "-g", "daemon off;"]
